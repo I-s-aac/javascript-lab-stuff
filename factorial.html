@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js lab stuff</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <a href="index.html">back to home</a>
+    <div class="container">
+        <h1>calculate factorial</h1>
+        <label for="factorialInput">input a number to do factorial on</label>
+        <input type="number" id="factorialInput" value="0">
+        <button onclick="calculateFactorial(document.getElementById('factorialInput').value)">calculate</button>
+        <div id="factorialDiv"></div>
+    </div>
+
+    <script>
+        // factorial of n using recursion
+        let loopCount = 0;
+        let changingN = 0;
+        function calculateFactorial(n) {
+
+            if (loopCount === 0) { changingN = n; }
+            loopCount += 1;
+
+            changingN *= n - loopCount;
+            console.log(n - loopCount);
+
+            if (n - loopCount > 1) {
+                calculateFactorial(n);
+            } else {
+                document.getElementById("factorialDiv").innerText = changingN;
+                changingN = 0;
+                loopCount = 0;
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -18,29 +18,24 @@
         <h1>calculate factorial</h1>
         <label for="factorialInput">input a number to do factorial on</label>
         <input type="number" id="factorialInput" value="0">
-        <button onclick="calculateFactorial(document.getElementById('factorialInput').value)">calculate</button>
+        <button onclick="displayFactorial()">calculate</button>
         <div id="factorialDiv"></div>
     </div>
 
     <script>
         // factorial of n using recursion
-        let loopCount = 0;
-        let changingN = 0;
         function calculateFactorial(n) {
-
-            if (loopCount === 0) { changingN = n; }
-            loopCount += 1;
-
-            changingN *= n - loopCount;
-            console.log(n - loopCount);
-
-            if (n - loopCount > 1) {
-                calculateFactorial(n);
+            if (n === 0 || n === 1) {
+                return 1;
             } else {
-                document.getElementById("factorialDiv").innerText = changingN;
-                changingN = 0;
-                loopCount = 0;
+                return n * calculateFactorial(n - 1);
             }
+        }
+
+        function displayFactorial() {
+            const number = document.getElementById("factorialInput").value;
+            const output = calculateFactorial(number);
+            document.getElementById("factorialDiv").innerText = output;
         }
     </script>
 </body>
